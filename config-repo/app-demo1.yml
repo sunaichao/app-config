@@ -1,0 +1,12 @@
+eureka:
+  instance:
+    hostname: localhost
+    appname: ${spring.application.name}
+    virtual-host-name: ${spring.application.name}
+    metadataMap:
+      instanceId: ${spring.application.name}:${server.port}
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://${service.eureka.hostname}:${service.eureka.port}/discovery/eureka/

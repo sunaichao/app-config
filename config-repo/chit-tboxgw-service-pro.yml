@@ -1,5 +1,5 @@
 server:
-  port: 18001
+  port: 19001
   context-path: /tboxgw
 spring:
   cloud:

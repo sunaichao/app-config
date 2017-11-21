@@ -1,0 +1,31 @@
+server:
+  port: 18001
+  context-path: /tboxgw
+spring:
+  cloud:
+    config:
+      uri: http://172.28.24.162:7001/config
+      fail-fast: true
+  application:
+    name: chit-tboxgw-service
+    
+eureka:
+  instance:
+    hostname: localhost
+    appname: chit-tboxgw-service
+    app-group-name: default-group
+    prefer-ip-address: false
+    virtual-host-name: chit-tboxgw-service
+    metadata-map:
+      instanceId: ${spring.application.name}:${server.port}
+  client:
+    region: default
+    registry-fetch-interval-seconds: 5
+    availability-zones:
+      default: ${APPLICATION_DOMAIN:${DOMAIN:defaultZone}}
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://172.28.24.162:8761/discovery/eureka/
+    
+      
